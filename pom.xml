@@ -7,7 +7,7 @@
 	==================================================================================================
     -->
 
-    <url>https://172.23.201.20:7070/distgasd/recaptcha4j</url>
+    <url>https://github.com/leoluzh/recaptcha4j</url>
     <organization>
         <name>Secretaria de Fazenda Minas Gerais</name>
         <url>http://www.fazenda.mg.gov.br</url>
@@ -36,7 +36,7 @@
 	==================================================================================================
     -->
 
-  	<version>2.0.1</version>
+  	<version>2.1.0-cga</version>
 
     <!--
 	==================================================================================================
@@ -103,7 +103,7 @@
         <maven.findbugs.plugin.version>2.5.3</maven.findbugs.plugin.version>
         <maven.plugin.version>2.3</maven.plugin.version>
         <junit.version>4.12</junit.version>
-        <json.version>20140107</json.version>
+        <json.version>20180130</json.version>
 
 	</properties>
 
@@ -225,6 +225,21 @@
 	                </configuration>
 	            </plugin>
 
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven.surefire.plugin.version}</version>
+					<configuration>
+						<systemProperties>
+							<recaptcha.site.key>${recaptcha.site.key}</recaptcha.site.key>
+							<recaptcha.secret.key>${recaptcha.secret.key}</recaptcha.secret.key>
+						</systemProperties>
+						<environmentVariables>
+							<RECAPTCHA_SITE_KEY>${env.RECAPTCHA_SITE_KEY}</RECAPTCHA_SITE_KEY>
+							<RECAPTCHA_SECRET_KEY>${env.RECAPTCHA_SECRET_KEY}</RECAPTCHA_SECRET_KEY>
+						</environmentVariables>
+					</configuration>
+				</plugin>
 			</plugins>
 
 		</pluginManagement>

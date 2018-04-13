@@ -35,8 +35,10 @@ public class ReCaptchaFactoryCaseTest {
 	@Before
 	public void setUp() throws Exception {
 
-		this.siteKey = System.getProperty("siteKey") ;
-		this.secretKey = System.getProperty("secretKey");
+		this.siteKey = System.getProperty("recaptcha.site.key", System.getenv("RECAPTCHA_SITE_KEY"));
+		this.secretKey = System.getProperty("recaptcha.secret.key", System.getenv("RECAPTCHA_SECRET_KEY"));
+		assertTrue("siteKey must be non-null", this.siteKey != null);
+		assertTrue("secretKey must be non-null", this.secretKey != null);
 		this.secure = true ;
 		this.noScript = false ;
 

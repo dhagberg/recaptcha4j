@@ -1,6 +1,7 @@
 package br.gov.mg.fazenda.recaptcha.internals;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -31,7 +32,9 @@ public final class ReCaptchaResponseBuilder {
 
 		result.setSuccess((Boolean)jsonObject.get(JSON_FIELD_SUCESS));
 
-		if( !result.isSuccess() ){
+		if( result.isSuccess() ) {
+			result.setErrorCodes(new ArrayList<String>(0));
+		} else {
 
 			JSONArray jsonCodes = (JSONArray)jsonObject.get(JSON_FIELD_ERROR_CODES);
 			List<String> errorCodes = new ArrayList<String>();

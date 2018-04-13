@@ -27,7 +27,8 @@ public class ReCaptchaUtilsTestCase extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		this.decodeSimbols = "áéíóúâêôãõçà" ;
-		this.encodeSimbols = "%E1%E9%ED%F3%FA%E2%EA%F4%E3%F5%E7%E0" ;
+		// Should be UTF-8 Encoded then URL encoded.
+		this.encodeSimbols = "%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%A2%C3%AA%C3%B4%C3%A3%C3%B5%C3%A7%C3%A0" ;
 	}
 
 	@After
